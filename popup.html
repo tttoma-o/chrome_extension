@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub連携</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>GitHub連携</h1>
+            <div class="auth-section" id="authSection">
+                <button id="loginBtn" class="btn btn-primary">GitHubでログイン</button>
+                <button id="logoutBtn" class="btn btn-secondary" style="display: none;">ログアウト</button>
+            </div>
+        </header>
+
+        <main class="main" id="mainContent" style="display: none;">
+            <div class="user-info" id="userInfo">
+                <img id="userAvatar" src="" alt="ユーザーアバター" class="avatar">
+                <div class="user-details">
+                    <h3 id="userName"></h3>
+                    <p id="userEmail"></p>
+                </div>
+            </div>
+
+            <nav class="nav-tabs">
+                <button class="tab-btn active" data-tab="repositories">リポジトリ</button>
+                <button class="tab-btn" data-tab="issues">イシュー</button>
+                <button class="tab-btn" data-tab="notifications">通知</button>
+            </nav>
+
+            <div class="tab-content">
+                <div id="repositories" class="tab-pane active">
+                    <div class="section-header">
+                        <h2>リポジトリ</h2>
+                        <button id="refreshRepos" class="btn btn-small">更新</button>
+                    </div>
+                    <div id="reposList" class="list">
+                        <!-- リポジトリ一覧がここに表示されます -->
+                    </div>
+                </div>
+
+                <div id="issues" class="tab-pane">
+                    <div class="section-header">
+                        <h2>イシュー</h2>
+                        <button id="refreshIssues" class="btn btn-small">更新</button>
+                    </div>
+                    <div id="issuesList" class="list">
+                        <!-- イシュー一覧がここに表示されます -->
+                    </div>
+                </div>
+
+                <div id="notifications" class="tab-pane">
+                    <div class="section-header">
+                        <h2>通知</h2>
+                        <button id="refreshNotifications" class="btn btn-small">更新</button>
+                    </div>
+                    <div id="notificationsList" class="list">
+                        <!-- 通知一覧がここに表示されます -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="loadingSpinner" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>読み込み中...</p>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

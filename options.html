@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub連携拡張機能 - 設定</title>
+    <link rel="stylesheet" href="options.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>GitHub連携拡張機能 設定</h1>
+        </header>
+
+        <main class="main">
+            <section class="section">
+                <h2>認証設定</h2>
+                <div class="form-group">
+                    <label for="clientId">GitHub Client ID</label>
+                    <input type="text" id="clientId" placeholder="GitHub OAuthアプリのClient IDを入力してください">
+                    <small>GitHub Developer SettingsでOAuthアプリを作成し、Client IDを取得してください</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="clientSecret">GitHub Client Secret</label>
+                    <input type="password" id="clientSecret" placeholder="GitHub OAuthアプリのClient Secretを入力してください">
+                    <small>Client Secretは安全に保管してください</small>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>表示設定</h2>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="showNotifications">
+                        通知をバッジで表示する
+                    </label>
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="autoRefresh">
+                        自動更新を有効にする
+                    </label>
+                </div>
+                
+                <div class="form-group">
+                    <label for="refreshInterval">更新間隔（分）</label>
+                    <select id="refreshInterval">
+                        <option value="5">5分</option>
+                        <option value="10" selected>10分</option>
+                        <option value="15">15分</option>
+                        <option value="30">30分</option>
+                        <option value="60">1時間</option>
+                    </select>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>通知設定</h2>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="notifyIssues">
+                        新しいイシューで通知
+                    </label>
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="notifyPullRequests">
+                        新しいプルリクエストで通知
+                    </label>
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="notifyComments">
+                        コメントで通知
+                    </label>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>データ管理</h2>
+                <div class="form-group">
+                    <button id="clearCache" class="btn btn-secondary">キャッシュをクリア</button>
+                    <small>保存されたデータとキャッシュを削除します</small>
+                </div>
+                
+                <div class="form-group">
+                    <button id="exportData" class="btn btn-secondary">データをエクスポート</button>
+                    <small>設定とデータをJSONファイルとしてダウンロードします</small>
+                </div>
+            </section>
+
+            <div class="actions">
+                <button id="saveSettings" class="btn btn-primary">設定を保存</button>
+                <button id="resetSettings" class="btn btn-secondary">設定をリセット</button>
+            </div>
+
+            <div id="statusMessage" class="status-message"></div>
+        </main>
+
+        <footer class="footer">
+            <p>GitHub連携拡張機能 v1.0</p>
+            <p>
+                <a href="https://github.com" target="_blank">GitHub</a> |
+                <a href="#" id="helpLink">ヘルプ</a> |
+                <a href="#" id="feedbackLink">フィードバック</a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="options.js"></script>
+</body>
+</html>

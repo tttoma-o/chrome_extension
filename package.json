@@ -1,0 +1,44 @@
+{
+  "name": "github-chrome-extension",
+  "version": "1.0.0",
+  "description": "GitHub連携Chrome拡張機能",
+  "scripts": {
+    "build": "echo 'Chrome拡張機能のビルド処理（必要に応じて追加）'",
+    "package": "zip -r github-extension.zip . -x '*.git*' 'node_modules/*' '*.log' 'config.json'",
+    "lint": "echo 'リンターの実行（必要に応じて追加）'",
+    "test": "echo 'テストの実行（必要に応じて追加）'",
+    "clean": "rm -rf dist/ build/ *.zip *.crx",
+    "setup": "cp config.example.json config.json && echo 'config.jsonファイルを作成しました。実際の値を設定してください。'",
+    "dev": "echo '開発モード（必要に応じて追加）'"
+  },
+  "keywords": [
+    "chrome-extension",
+    "github",
+    "oauth",
+    "repository-management",
+    "issues",
+    "notifications"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/github-chrome-extension.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/github-chrome-extension/issues"
+  },
+  "homepage": "https://github.com/your-username/github-chrome-extension#readme",
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "not dead"
+  ]
+}

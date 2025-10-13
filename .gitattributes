@@ -1,0 +1,101 @@
+# Git属性設定ファイル
+
+# ===================================
+# テキストファイルの正規化
+# ===================================
+
+# すべてのテキストファイルをLFに統一
+* text=auto eol=lf
+
+# 明示的にテキストファイルとして扱う
+*.html text
+*.css text
+*.js text
+*.json text
+*.md text
+*.txt text
+*.xml text
+*.yml text
+*.yaml text
+
+# ===================================
+# バイナリファイル
+# ===================================
+
+# 画像ファイル
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg binary
+*.webp binary
+
+# アーカイブファイル
+*.zip binary
+*.rar binary
+*.7z binary
+*.tar binary
+*.gz binary
+
+# その他のバイナリファイル
+*.pdf binary
+*.doc binary
+*.docx binary
+*.xls binary
+*.xlsx binary
+
+# ===================================
+# 言語別設定
+# ===================================
+
+# JavaScript
+*.js linguist-language=JavaScript
+*.mjs linguist-language=JavaScript
+
+# HTML
+*.html linguist-language=HTML
+
+# CSS
+*.css linguist-language=CSS
+
+# JSON
+*.json linguist-language=JSON
+
+# Markdown
+*.md linguist-language=Markdown
+
+# ===================================
+# ファイルの除外設定
+# ===================================
+
+# 生成されたファイルは言語統計から除外
+manifest.json linguist-generated=true
+config.json linguist-generated=true
+
+# ===================================
+# 改行コードの強制設定
+# ===================================
+
+# Windows用ファイル（CRLFを強制）
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Unix用ファイル（LFを強制）
+*.sh text eol=lf
+Makefile text eol=lf
+
+# ===================================
+# マージ戦略
+# ===================================
+
+# バイナリファイルはマージしない
+*.png merge=ours
+*.jpg merge=ours
+*.jpeg merge=ours
+*.gif merge=ours
+*.ico merge=ours
+
+# 設定ファイルはマージしない
+config.json merge=ours
+manifest.json merge=ours

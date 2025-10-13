@@ -1,0 +1,163 @@
+# Chrome拡張機能開発用 .gitignore
+
+# ===================================
+# 開発環境・設定ファイル
+# ===================================
+
+# IDE・エディタ
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# オペレーティングシステム
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ===================================
+# Node.js・npm（もしNode.jsを使う場合）
+# ===================================
+
+# 依存関係
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# ビルド出力
+dist/
+build/
+out/
+
+# ===================================
+# Chrome拡張機能固有
+# ===================================
+
+# パッケージ化された拡張機能
+*.crx
+*.zip
+*.pem
+*.key
+
+# 一時的なファイル
+temp/
+tmp/
+.cache/
+
+# デバッグ用ファイル
+debug.log
+error.log
+
+# ===================================
+# 開発用ツール
+# ===================================
+
+# ESLint
+.eslintcache
+.eslintignore
+
+# Prettier
+.prettierignore
+.prettierrc
+
+# TypeScript（もしTypeScriptを使う場合）
+*.tsbuildinfo
+
+# ===================================
+# 機密情報・設定
+# ===================================
+
+# 機密設定ファイル
+config.local.js
+secrets.json
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# GitHub OAuth設定（実際の値は含めない）
+# 注意: 実際のClient ID/Secretは環境変数や別ファイルで管理
+oauth-config.json
+
+# ===================================
+# テスト・カバレッジ
+# ===================================
+
+# テスト結果
+coverage/
+.nyc_output/
+junit.xml
+
+# テスト用ファイル
+test-results/
+screenshots/
+videos/
+
+# ===================================
+# ログファイル
+# ===================================
+
+*.log
+logs/
+*.log.*
+
+# ===================================
+# バックアップファイル
+# ===================================
+
+*.bak
+*.backup
+*.old
+*.orig
+
+# ===================================
+# アップロード・ダウンロード
+# ===================================
+
+downloads/
+uploads/
+
+# ===================================
+# その他の開発ファイル
+# ===================================
+
+# サンプル・テスト用画像
+sample-images/
+test-images/
+
+# 開発用データベース
+*.db
+*.sqlite
+*.sqlite3
+
+# 開発用証明書
+*.p12
+*.pfx
+
+# ===================================
+# 注意事項
+# ===================================
+
+# 以下のファイルは必ずGitに含める必要があります：
+# - manifest.json
+# - popup.html, popup.css, popup.js
+# - background.js
+# - options.html, options.css, options.js
+# - icons/ フォルダ（アイコンファイル）
+# - README.md
+# - github-guide.html, github-guide.css
+
+# 機密情報（Client ID/Secret）は以下の方法で管理してください：
+# 1. 環境変数を使用
+# 2. 別の設定ファイル（gitignoreに含める）
+# 3. Chrome拡張機能のストレージAPIを使用

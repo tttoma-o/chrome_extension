@@ -1,0 +1,283 @@
+/* 基本スタイル */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    width: 400px;
+    min-height: 500px;
+    background-color: #f6f8fa;
+    color: #24292f;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* ヘッダー */
+.header {
+    background: linear-gradient(135deg, #24292f 0%, #1a1e22 100%);
+    color: white;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* ボタンスタイル */
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: #238636;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2ea043;
+}
+
+.btn-secondary {
+    background-color: #656d76;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #525960;
+}
+
+.btn-small {
+    padding: 4px 8px;
+    font-size: 12px;
+    background-color: #f6f8fa;
+    color: #656d76;
+    border: 1px solid #d0d7de;
+}
+
+.btn-small:hover {
+    background-color: #f3f4f6;
+}
+
+/* メインコンテンツ */
+.main {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+}
+
+/* ユーザー情報 */
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 12px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.user-details h3 {
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.user-details p {
+    font-size: 14px;
+    color: #656d76;
+}
+
+/* タブナビゲーション */
+.nav-tabs {
+    display: flex;
+    border-bottom: 1px solid #d0d7de;
+    margin-bottom: 16px;
+}
+
+.tab-btn {
+    padding: 8px 16px;
+    border: none;
+    background: none;
+    color: #656d76;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.tab-btn.active {
+    color: #24292f;
+    border-bottom-color: #fd7e14;
+}
+
+.tab-btn:hover {
+    color: #24292f;
+}
+
+/* タブコンテンツ */
+.tab-content {
+    flex: 1;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+/* セクションヘッダー */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.section-header h2 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* リスト */
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.list-item {
+    background: white;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    padding: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.list-item:hover {
+    border-color: #fd7e14;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.list-item h4 {
+    font-size: 14px;
+    margin-bottom: 4px;
+    color: #24292f;
+}
+
+.list-item p {
+    font-size: 12px;
+    color: #656d76;
+    margin-bottom: 4px;
+}
+
+.list-item .meta {
+    display: flex;
+    gap: 8px;
+    font-size: 11px;
+    color: #656d76;
+}
+
+.badge {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.badge-open {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.badge-closed {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.badge-private {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.badge-public {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+/* ローディング */
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #fd7e14;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 12px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 空の状態 */
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #656d76;
+}
+
+.empty-state h3 {
+    margin-bottom: 8px;
+    color: #24292f;
+}
+
+/* レスポンシブ */
+@media (max-width: 400px) {
+    body {
+        width: 100%;
+    }
+    
+    .header {
+        padding: 12px;
+    }
+    
+    .main {
+        padding: 12px;
+    }
+}

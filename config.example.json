@@ -1,0 +1,22 @@
+{
+  "github": {
+    "clientId": "YOUR_GITHUB_CLIENT_ID_HERE",
+    "clientSecret": "YOUR_GITHUB_CLIENT_SECRET_HERE"
+  },
+  "development": {
+    "debug": false,
+    "logLevel": "info"
+  },
+  "features": {
+    "autoRefresh": true,
+    "showNotifications": true,
+    "notifyIssues": true,
+    "notifyPullRequests": true,
+    "notifyComments": false
+  },
+  "ui": {
+    "theme": "light",
+    "language": "ja",
+    "refreshInterval": 10
+  }
+}

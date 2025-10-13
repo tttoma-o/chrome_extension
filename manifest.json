@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "GitHub連携拡張機能",
+  "version": "1.0",
+  "description": "GitHubと連携してリポジトリやイシューを管理できるChrome拡張機能",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "identity",
+    "https://api.github.com/*",
+    "https://github.com/*"
+  ],
+  "host_permissions": [
+    "https://api.github.com/*",
+    "https://github.com/*"
+  ],
+  "oauth2": {
+    "client_id": "YOUR_GITHUB_CLIENT_ID",
+    "scopes": [
+      "repo",
+      "user",
+      "read:org"
+    ]
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "GitHub連携"
+  },
+  "options_page": "options.html",
+  "web_accessible_resources": [
+    {
+      "resources": ["github-guide.html", "github-guide.css"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
