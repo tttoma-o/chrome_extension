@@ -42,6 +42,11 @@ class PopupManager {
         document.getElementById('refreshNotifications').addEventListener('click', () => {
             this.loadNotifications();
         });
+
+        // ページ情報コピーボタン
+        document.getElementById('copyPageInfo').addEventListener('click', () => {
+            this.copyPageInfo();
+        });
     }
 
     async checkAuthentication() {
@@ -408,6 +413,33 @@ class PopupManager {
                 </div>
             `;
         }
+    }
+
+    async copyPageInfo() {
+        try {
+            const response = await this.sendMessage({ action: 'copyPageTitleAndUrl' });
+            if (response.success) {
+                this.showSuccessMessage('ページ情報をコピーしました！');
+            } else {
+                this.showError('コピーに失敗しました: ' + response.error);
+            }
+        } catch (error) {
+            console.error('コピーエラー:', error);
+            this.showError('コピーに失敗しました: ' + error.message);
+        }
+    }
+
+    showSuccessMessage(message) {
+        // 成功メッセージを表示（一時的に）
+        const button = document.getElementById('copyPageInfo');
+        const originalText = button.textContent;
+        button.textContent = '✅ コピー完了！';
+        button.style.backgroundColor = '#28a745';
+        
+        setTimeout(() => {
+            button.textContent = originalText;
+            button.style.backgroundColor = '';
+        }, 2000);
     }
 
     sendMessage(message) {

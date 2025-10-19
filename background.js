@@ -20,6 +20,9 @@ class GitHubExtension {
         chrome.runtime.onInstalled.addListener(() => {
             this.onInstalled();
         });
+
+        // コンテキストメニューの設定
+        this.setupContextMenus();
     }
 
     async loadToken() {
@@ -89,6 +92,11 @@ class GitHubExtension {
 
                 case 'markNotificationAsRead':
                     await this.markNotificationAsRead(request.notificationId);
+                    sendResponse({ success: true });
+                    break;
+
+                case 'copyPageTitleAndUrl':
+                    await this.copyPageTitleAndUrl();
                     sendResponse({ success: true });
                     break;
 
@@ -285,6 +293,89 @@ class GitHubExtension {
 
         if (!response.ok) {
             throw new Error('通知の既読化に失敗しました');
+        }
+    }
+
+    setupContextMenus() {
+        chrome.contextMenus.create({
+            id: 'copyPageTitleAndUrl',
+            title: 'ページタイトルとURLをコピー',
+            contexts: ['page']
+        });
+
+        chrome.contextMenus.onClicked.addListener((info, tab) => {
+            if (info.menuItemId === 'copyPageTitleAndUrl') {
+                this.copyPageTitleAndUrl();
+            }
+        });
+    }
+
+    async copyPageTitleAndUrl() {
+        try {
+            const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+
+            if (!tab || !tab.id || !tab.url) {
+                throw new Error('ページ情報を取得できませんでした');
+            }
+
+            // chrome:// や chromewebdata などの特殊ページは不可
+            if (/^chrome(|-extension):\/\//.test(tab.url) || tab.url.startsWith('chromewebdata:')) {
+                throw new Error('このページではコピーできません');
+            }
+
+            const result = await chrome.scripting.executeScript({
+                target: { tabId: tab.id },
+                func: async () => {
+                    const title = document.title || location.hostname;
+                    const text = `${title}\n${location.href}`;
+
+                    // クリップボードAPIが使えない場合に備えてフォールバック
+                    const write = async () => {
+                        try {
+                            await navigator.clipboard.writeText(text);
+                            return true;
+                        } catch (_) {
+                            const textarea = document.createElement('textarea');
+                            textarea.value = text;
+                            textarea.style.position = 'fixed';
+                            textarea.style.opacity = '0';
+                            document.body.appendChild(textarea);
+                            textarea.focus();
+                            textarea.select();
+                            const ok = document.execCommand('copy');
+                            document.body.removeChild(textarea);
+                            return ok;
+                        }
+                    };
+
+                    const ok = await write();
+                    return ok;
+                }
+            });
+
+            const success = Array.isArray(result) ? Boolean(result[0].result) : false;
+            if (!success) {
+                throw new Error('クリップボードへの書き込みに失敗しました');
+            }
+
+            this.showNotification('ページタイトルとURLをコピーしました');
+        } catch (error) {
+            console.error('コピーエラー:', error);
+            this.showNotification('コピーに失敗しました: ' + error.message);
+        }
+    }
+
+    showNotification(message) {
+        // Chromeの通知APIを使用（権限があれば）
+        if (chrome.notifications) {
+            chrome.notifications.create({
+                type: 'basic',
+                iconUrl: 'icons/icon.svg',
+                title: 'GitHub連携拡張機能',
+                message: message
+            });
+        } else {
+            console.log('通知:', message);
         }
     }
 

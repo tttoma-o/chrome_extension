@@ -7,6 +7,11 @@
     "storage",
     "activeTab",
     "identity",
+    "contextMenus",
+    "clipboardWrite",
+    "scripting",
+    "tabs",
+    "notifications",
     "https://api.github.com/*",
     "https://github.com/*"
   ],
@@ -14,14 +19,6 @@
     "https://api.github.com/*",
     "https://github.com/*"
   ],
-  "oauth2": {
-    "client_id": "YOUR_GITHUB_CLIENT_ID",
-    "scopes": [
-      "repo",
-      "user",
-      "read:org"
-    ]
-  },
   "background": {
     "service_worker": "background.js"
   },
@@ -37,8 +34,8 @@
     }
   ],
   "icons": {
-    "16": "icons/icon16.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
+    "16": "icons/icon.svg",
+    "48": "icons/icon.svg",
+    "128": "icons/icon.svg"
   }
 }
